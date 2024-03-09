@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Thesis Search</h1>
+<h2>Authors</h2>
+  
+<ul>
+  {% for x in research_authors %}
+    <li><a href="title_details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }} </a></li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
