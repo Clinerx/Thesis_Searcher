@@ -1,0 +1,10 @@
+{% for author in page_obj %}
+  <h2>{{ author.firstname }} {{ author.lastname }}</h2>
+  <ul>
+    {% for thesis in author.theses %}
+      <li><b>{{ thesis.title }}</b></li>
+      <p>{{ thesis.abstract }}</p>
+      <hr>
+    {% endfor %}
+  </ul>
+{% endfor %}

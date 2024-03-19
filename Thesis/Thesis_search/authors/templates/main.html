@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Thesis Library
+{% endblock %}
+
+{% block content %}
+  <h1>Thesis Search</h1>
+
+  <h3>Authors</h3>
+
+  <!-- Search form -->
+  <form action="{% url 'search_results' %}" method="GET">
+    <input type="text" name="query" placeholder="Search by author name...">
+    <button type="submit">Search</button>
+  </form>
+
+  {% for author in authors|slice:":3" %}
+    <h2>{{ author.firstname }} {{ author.lastname }}</h2>
+    <ul>
+      {% for thesis in author.theses %}
+        <li><b>{{ thesis.title }}</b></li>
+        <p>{{ thesis.abstract }}</p>
+        <hr>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+
+{% endblock %}

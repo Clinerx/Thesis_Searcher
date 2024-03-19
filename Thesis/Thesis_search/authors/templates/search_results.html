@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Search Results
+{% endblock %}
+
+{% block content %}
+  <h1>Search Results</h1>
+
+  <h3>Results for "{{ query }}"</h3>
+  
+  <!-- Search form -->
+  <form action="{% url 'search_results' %}" method="GET">
+    <input type="text" name="query" placeholder="Search again...">
+    <button type="submit">Search</button>
+  </form>
+
+  <ul>
+    {% if results %}
+      {% for thesis in results %}
+        <li><b>{{ thesis.firstname }} {{ thesis.lastname }}</b> - {{ thesis.title }}</li>
+        <p>{{ thesis.abstract }}</p>
+        <hr>
+        <!-- You can display other information about the thesis here -->
+      {% endfor %}
+    {% else %}
+      <li>No results found.</li>
+    {% endif %}
+  </ul>
+
+  <!-- Back home link -->
+  <a href="{% url 'main' %}">Back Home</a>
+  
+{% endblock %}
